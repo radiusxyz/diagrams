@@ -19,13 +19,13 @@ S->>S: solve time-lock puzzle <br/> to get decryption key
 end
 S->>S: decrypt tx
 S->>S: generate block commitment
-S->>S: generate vector commitment
-S->>S: generate pointproof
-S->>E: store vector commitment on Ethereum
+S->>S: generate vector Merkle root
+S->>S: generate Merkle proof
+S->>E: store vector Merkle root
 R->>S: request block
 S-->>R: submit block
-U-->>S: request pointproof
-S-->>U: send pointproof, <br/> signature
+U-->>S: request Merkle proof
+S-->>U: send Merkle proof, <br/> signature
 opt verify inclusion and order
 U->>E: submit tx, order, proof, signatures
 end
