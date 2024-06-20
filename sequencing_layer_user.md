@@ -1,8 +1,8 @@
 sequenceDiagram
 participant U as User
-participant F1 as Follower 1
-participant F2 as Follower 2
-participant L as Leader
+participant F1 as Sequencer <br/> (Follower)
+participant F2 as Sequencer <br/> (Follower)
+participant L as Sequencer <br/> (Leader)
 participant SSAL
 participant R as Rollup
 participant E as Ethereum
