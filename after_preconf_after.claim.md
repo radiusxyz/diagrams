@@ -1,5 +1,4 @@
 sequenceDiagram
-autonumber
 participant U as User
 participant S as Sequencer Set
 participant R as Rollup
@@ -22,8 +21,8 @@ S->>S: generate block commitment
 S->>S: generate Merkle proof
 S->>S: generate Merkle root
 S->>E: store Merkle root
-U-->>S: request Merkle proof
-S-->>U: send Merkle proof, <br/> signature
+U->>S: request Merkle proof
+S-->>U: Merkle proof, <br/> signature
 opt verify inclusion and order
-U->>E: submit tx, order, proof, signatures
+U->>E: call verify function with arguments: <br/> partial Merkle proof, <br/> signature, <br/> Merkle Proof, <br/> order, <br/> root, <br/> signature
 end
