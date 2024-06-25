@@ -1,5 +1,6 @@
 sequenceDiagram
-participant S3 as Sequencer 3 <br/> (Follower)
+%% participant S3 as Sequencer 3 <br/> (Follower)
+autonumber
 participant S2 as Sequencer 2 <br/> (Follower)
 participant S1 as Sequencer 1 <br/> (Leader)
 participant L1 as SSAL(L1)
@@ -8,8 +9,13 @@ participant A as Aggregator
 R->>S1: close block
 S1->>S2: close block
 S1-->>R: block
+S1->>S1: generate block commitment
 S1->>L1: block commitment
 L1->>A: block commitment event
-S2->>A: validate
+S2->>S2: generate block commitment
+S2->>A: block commitment
+A->>A: aggregate commitments
 A->>L1: finalize validation
+opt majority coincidence
 L1->>S1: reward
+end
